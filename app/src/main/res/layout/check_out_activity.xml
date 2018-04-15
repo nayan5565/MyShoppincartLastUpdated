@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/main_color"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:title="Checkout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/dp10">
+
+
+            <TextView
+                android:id="@+id/tvTotalItems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Price" />
+
+            <TextView
+                android:id="@+id/tvTotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="DcPrice" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="#000000" />
+
+            <TextView
+                android:id="@+id/txtPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="Payment Type" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtShipmentAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="Shipment Address"
+                android:textColor="#000" />
+
+            <EditText
+                android:id="@+id/etStreetAdd1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Street Address 1"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/etStreetAdd2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Street Address 2"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/etPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/etState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="State"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/etCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="City"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/etCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Country"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/etZipCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Zip Code"
+                android:inputType="text" />
+
+            <Button
+
+                android:id="@+id/btnDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Done" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

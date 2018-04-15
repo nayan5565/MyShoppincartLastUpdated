@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="10"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:orientation="vertical">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent" />
+
+        <TextView
+            android:id="@+id/tvSkip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp30"
+            android:text="SKIP"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp20"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/indicator"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/dp20"
+            app:ci_drawable="@drawable/circle_tut" />
+
+        <Button
+
+            android:id="@+id/btnStart"
+            android:layout_width="@dimen/dp180"
+            android:layout_height="@dimen/dp50"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp5"
+            android:background="@drawable/btn_rounded"
+            android:text="LETS'GO"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp20"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
+</LinearLayout>

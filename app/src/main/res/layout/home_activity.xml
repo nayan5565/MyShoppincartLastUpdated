@@ -1,0 +1,211 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/frgBanner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone" />
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Shopping" />
+
+                <ImageView
+                    android:id="@+id/imgShopping"
+                    android:layout_width="@dimen/dp40"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_gravity="right"
+                    android:padding="@dimen/dp10"
+                    android:src="@drawable/shopping_cart" />
+
+                <ImageView
+                    android:id="@+id/imgSearch"
+                    android:layout_width="@dimen/dp40"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_gravity="right"
+                    android:padding="@dimen/dp10"
+                    android:src="@drawable/search" />
+
+
+            </android.support.v7.widget.Toolbar>
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp150">
+
+                        <android.support.v4.view.ViewPager
+                            android:id="@+id/viewpagerBanner"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <me.relex.circleindicator.CircleIndicator
+                            android:id="@+id/indicator"
+                            android:layout_width="fill_parent"
+                            android:layout_height="40dp"
+                            android:layout_alignParentBottom="true"
+                            app:ci_drawable="@drawable/circle_tut" />
+
+                    </RelativeLayout>
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recCat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp30" />
+
+                    <TextView
+                        android:id="@+id/tvTop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/dp30"
+                        android:text="TOP OF THE WEEK"
+                        android:textColor="#D1BF2D"
+                        android:textSize="@dimen/sp25" />
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recTopWeek"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp30" />
+
+                    <TextView
+                        android:id="@+id/tvTrendy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/dp30"
+                        android:text="NEW AND TRENDY"
+                        android:textColor="#99BF04"
+                        android:textSize="@dimen/sp25" />
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recNewTrend"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp30" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp30">
+
+                        <TextView
+                            android:id="@+id/tvFlash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="FLASH DETAILS"
+                            android:textColor="#4E6BE4"
+                            android:textSize="@dimen/sp25" />
+
+                        <TextView
+                            android:id="@+id/tvTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/dp20"
+                            android:text="12:55:21"
+                            android:textSize="@dimen/sp20" />
+
+                    </RelativeLayout>
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recFlash"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp30" />
+
+                    <Button
+                        android:id="@+id/btnViewAll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/dp30"
+                        android:text="VIEW ALL"
+                        android:textSize="@dimen/sp25" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recBrand"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dp15" />
+
+
+                </LinearLayout>
+
+
+            </ScrollView>
+
+            <android.support.design.widget.TabLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/footerTab"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp60"
+                android:background="#333333"
+                app:tabGravity="fill"
+                app:tabPadding="0dp" />
+
+
+        </LinearLayout>
+
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/navigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="#4D4D4D"
+            app:headerLayout="@layout/drawer_header"
+            app:itemIconTint="@color/white"
+            app:menu="@menu/drawer" />
+
+
+    </android.support.v4.widget.DrawerLayout>
+
+</LinearLayout>

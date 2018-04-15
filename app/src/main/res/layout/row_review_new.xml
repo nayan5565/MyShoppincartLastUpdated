@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/dp20"
+    android:paddingLeft="@dimen/dp10">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="@dimen/dp40"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@drawable/circle" />
+
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_toRightOf="@+id/img"
+        android:text="Name"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvName"
+        android:layout_marginLeft="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_toRightOf="@+id/img"
+        android:text="role of play" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@style/Base.Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp15"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.5"
+        android:theme="@style/RatingBar" />
+
+    <TextView
+        android:id="@+id/tvStar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp15"
+        android:layout_marginRight="@dimen/dp7"
+        android:layout_toLeftOf="@+id/ratingBar"
+        android:text="4.5" />
+
+
+    <TextView
+        android:id="@+id/tvReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp20"
+        android:text="Sample of review" />
+
+</RelativeLayout>

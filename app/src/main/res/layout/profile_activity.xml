@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/main_color"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:title="My Profile" />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp10"
+        android:src="@drawable/user_icon" />
+
+    <TextView
+        android:id="@+id/txtFullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Full Name"
+        android:textColor="#000"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp20"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Nick Name :"
+            android:textColor="#000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtSurName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Email: "
+            android:textColor="#000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Gender :"
+            android:textColor="#000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="BirthDate :"
+            android:textColor="#000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtBirthDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Country :"
+            android:textColor="#000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtCountry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Age :"
+            android:textColor="#000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Phone :"
+            android:textColor="#000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Edit"
+        android:textColor="#000"
+        android:visibility="gone" />
+
+</LinearLayout>

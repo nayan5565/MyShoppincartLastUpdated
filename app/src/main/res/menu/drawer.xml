@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/mnuHalnagad"
+            android:icon="@drawable/menu_halnagad"
+            android:title="সর্বশেষ হালনাগাত"
+            android:visible="false" />
+        <item
+            android:id="@+id/mnuHome"
+            android:icon="@drawable/icon_cat"
+            android:title="Home" />
+        <item
+            android:id="@+id/mnuCategory"
+            android:icon="@drawable/product_icon_white"
+            android:title="Categoría" />
+
+        <item
+
+            android:id="@+id/mnuFav"
+            android:icon="@drawable/delivery_icon_white"
+            android:title="Pedido" />
+        <item
+            android:id="@+id/mnuAsk"
+            android:icon="@drawable/icon_contact"
+            android:title="Contacto" />
+        <item
+            android:id="@+id/mnuProfile"
+            android:icon="@drawable/my_account_icon_white"
+            android:title="Profile" />
+        <item
+            android:id="@+id/mnuFavorite"
+            android:icon="@drawable/favorite"
+            android:title="Favorte" />
+        <item
+            android:id="@+id/mnuLogout"
+            android:icon="@drawable/icon_contact"
+            android:title="Logout" />
+
+        <item
+            android:id="@+id/mnuAbout"
+            android:icon="@drawable/icon_tut"
+            android:title="About"
+            android:visible="true" />
+
+    </group>
+
+    <!--<item android:title="Others">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_settings"-->
+                <!--android:checkable="true"-->
+                <!--android:checked="true"-->
+                <!--android:title="Settings" />-->
+            <!--<item-->
+                <!--android:id="@+id/nav_about"-->
+                <!--android:icon="@android:drawable/ic_menu_send"-->
+                <!--android:title="About" />-->
+        <!--</menu>-->
+    <!--</item>-->
+
+
+</menu>

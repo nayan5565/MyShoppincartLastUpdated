@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/login_screen_image_new" />
+
+    <TextView
+        android:id="@+id/tvSkip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp30"
+        android:text="SKIP"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp25"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp100"
+        android:layout_above="@+id/ln"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dp15"
+            android:src="@drawable/connect_facebook_button"
+            android:text="CONNECT WITH FACEBOOK"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp20" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ln"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp70"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="LOGIN" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btnSign"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/dp5"
+                android:background="#333"
+                android:text="SIGIN UP"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

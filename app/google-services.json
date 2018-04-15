@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "611375106434",
+    "firebase_url": "https://myshoppingcartupdated.firebaseio.com",
+    "project_id": "myshoppingcartupdated",
+    "storage_bucket": "myshoppingcartupdated.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611375106434:android:a8cb354afbb30607",
+        "android_client_info": {
+          "package_name": "com.swapnopuri.shopping.cart.my"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611375106434-nu6htvvdkd29deoq00ocltrs5fq0pfth.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.swapnopuri.shopping.cart.my",
+            "certificate_hash": "0fef1cf59481e195939e68dae5475923b420fd24"
+          }
+        },
+        {
+          "client_id": "611375106434-qe5eknv9ln769f2mvm92jq0faptdauqg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbuOQthJy_OPqE6ikBtSlHrHNdX5PAoVM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611375106434-qe5eknv9ln769f2mvm92jq0faptdauqg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

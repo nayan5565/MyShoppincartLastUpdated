@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/main_color" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp10">
+
+            <EditText
+                android:id="@+id/edtFullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Full Name"
+                android:inputType="text"
+                android:textColor="#f00" />
+
+            <EditText
+                android:id="@+id/edtSurName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nick Name"
+                android:inputType="text"
+                android:textColor="#f00" />
+
+            <EditText
+                android:id="@+id/edtMail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email Address"
+                android:inputType="textEmailAddress"
+                android:textColor="#f00" />
+
+            <EditText
+                android:id="@+id/edtPassWord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textColor="#f00" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rdGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rdMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="Male" />
+
+                <RadioButton
+                    android:id="@+id/rdFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="Female" />
+
+            </RadioGroup>
+
+
+            <EditText
+                android:id="@+id/edtBirthDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Birth Date"
+                android:textColor="#f00" />
+
+            <EditText
+                android:id="@+id/edtCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Country"
+                android:inputType="text"
+                android:textColor="#f00" />
+
+            <EditText
+                android:id="@+id/edtAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Age"
+                android:inputType="number"
+                android:textColor="#f00" />
+
+            <EditText
+                android:id="@+id/edtPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone"
+                android:inputType="phone"
+                android:textColor="#f00" />
+
+            <ImageView
+                android:id="@+id/imgImage"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:background="#f0f"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnRegistration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Registration"
+                android:textColor="#f0f" />
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Login"
+                android:textColor="#f0f" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="3">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp220"
+            android:background="@color/colorPrimary" />
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:layout_marginLeft="@dimen/dp30"
+            android:layout_marginTop="@dimen/dp30"
+            android:src="@drawable/ic_back" />
+
+        <ImageView
+            android:id="@+id/imgShopping"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp30"
+            android:layout_marginTop="@dimen/dp30"
+            android:src="@drawable/shopping_cart" />
+
+        <ImageView
+
+            android:id="@+id/imgProfile"
+            android:layout_width="@dimen/dp150"
+            android:layout_height="@dimen/dp150"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/circle" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.2">
+
+        <TextView
+            android:id="@+id/txtFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp30"
+            android:text="MD NURUL ISLAM" />
+
+        <TextView
+            android:id="@+id/tvMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtFullName"
+            android:layout_marginTop="@dimen/dp8"
+            android:layout_toLeftOf="@id/txtMail"
+            android:text="EMAIL : " />
+
+        <TextView
+            android:id="@+id/txtMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtFullName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp8"
+            android:text="nayan5565@gmail.com" />
+
+
+        <TextView
+
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvMail"
+            android:layout_marginLeft="20dp"
+            android:visibility="gone"
+            android:text="BirthDate :"
+            android:textColor="#000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/txtBirthDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtMail"
+            android:layout_centerHorizontal="true"
+            android:text="12/16/17"
+            android:textColor="#000" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".3">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btnUpdate"
+                android:layout_width="@dimen/dp180"
+                android:layout_height="@dimen/dp60"
+                android:layout_alignParentBottom="true"
+                android:background="#f4f4f4"
+                android:text="UPDATE" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btnAllOrder"
+                android:layout_width="@dimen/dp180"
+                android:layout_height="@dimen/dp60"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="#DDBA76"
+                android:text="ALL ORDERS" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

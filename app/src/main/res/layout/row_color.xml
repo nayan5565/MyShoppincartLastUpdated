@@ -1,0 +1,21 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="25dip"
+    android:layout_marginLeft="@dimen/dp10"
+    android:layout_height="25dip">
+
+    <ImageView
+        android:id="@+id/btnColor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/circle" />
+
+    <ImageView
+        android:id="@+id/imgTick"
+        android:layout_width="20dip"
+        android:layout_height="20dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_action_tick"
+        android:visibility="gone" />
+
+
+</RelativeLayout>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <android.support.v4.widget.DrawerLayout
+            android:id="@+id/drawerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:gravity="center"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                    <TextView
+                        android:id="@+id/toolbar_title"
+                        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="My Shopping" />
+
+                    <ImageView
+                        android:id="@+id/imgOrderShopping"
+                        android:layout_width="@dimen/dp40"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_gravity="right"
+                        android:padding="@dimen/dp10"
+                        android:src="@drawable/shopping_cart" />
+
+                    <ImageView
+                        android:id="@+id/imgSearch"
+                        android:layout_width="@dimen/dp40"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_gravity="right"
+                        android:padding="@dimen/dp10"
+                        android:src="@drawable/search" />
+                </android.support.v7.widget.Toolbar>
+
+                <FrameLayout
+                    android:id="@+id/fragContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <android.support.design.widget.TabLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/footerTab"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp60"
+                    android:background="#333333"
+                    app:tabGravity="fill"
+                    app:tabPadding="0dp" />
+            </LinearLayout>
+
+
+            <android.support.design.widget.NavigationView
+                android:id="@+id/navigationView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:background="#4D4D4D"
+                app:headerLayout="@layout/drawer_header"
+                app:itemIconTint="@color/white"
+                app:menu="@menu/drawer" />
+
+
+        </android.support.v4.widget.DrawerLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnSingleList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="12">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3.5">
+
+            <!--<ImageView-->
+            <!--android:id="@+id/img"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent" />-->
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpagerImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp40"
+                android:layout_marginLeft="@dimen/dp10"
+                android:paddingTop="@dimen/dp15"
+                android:scaleType="fitXY"
+                android:src="@drawable/back_button_active" />
+
+            <ImageView
+                android:id="@+id/imgShopping"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp40"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp80"
+                android:layout_marginTop="@dimen/dp10"
+                android:paddingTop="@dimen/dp10"
+                android:scaleType="fitXY"
+                android:src="@drawable/shopping_cart_active" />
+
+            <ImageView
+                android:id="@+id/imgFav"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp40"
+                android:layout_margin="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp80"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_toLeftOf="@+id/imgShopping"
+                android:paddingTop="@dimen/dp10"
+                android:scaleType="fitXY" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvDiscripsion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp10"
+                android:text="SHORT GEOMETRICO AZUL SHORT GEOMETRICO AZUL"
+                android:textColor="#000" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <include layout="@layout/lay_footer_tab_2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6.5"
+            android:orientation="horizontal">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lnColor"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnSize"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/len"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:id="@+id/relPriceInform"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp5"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="$123"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:id="@+id/tvDisPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvPrice"
+                    android:text="$123"
+                    android:textColor="#000"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvDiscount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="20%"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDcTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/tvDiscount"
+                    android:layout_marginRight="@dimen/dp5"
+                    android:text="Discount"
+                    android:textColor="#000" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btnBuy"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#F8E71c"
+                android:text="ADD TO CART"
+                android:textColor="#000" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

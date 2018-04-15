@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3.5">
+
+            <EditText
+                android:id="@+id/edtReview"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp80"
+                android:layout_marginLeft="@dimen/dp30"
+                android:layout_marginRight="@dimen/dp30"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@drawable/edt_view"
+                android:hint="write your review in details here"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edtReview"
+                android:layout_marginLeft="@dimen/dp30"
+                android:layout_marginRight="@dimen/dp30"
+                android:background="#777"
+                android:text="SAVE"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvWrite"
+                android:layout_width="@dimen/dp220"
+                android:layout_height="@dimen/dp50"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp50"
+                android:background="@drawable/view_corner_rounded_2"
+                android:gravity="center"
+                android:text="Write a Review" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6.5">
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="@style/Base.Widget.AppCompat.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp15"
+                android:numStars="5"
+                android:stepSize="0.5"
+                android:isIndicator="true"
+                android:theme="@style/RatingBar" />
+
+            <TextView
+                android:id="@+id/tvRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp25"
+                android:layout_marginTop="@dimen/dp20"
+                android:layout_toLeftOf="@+id/ratingBar"
+                android:textSize="@dimen/sp25" />
+
+            <TextView
+                android:id="@+id/tvViews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp20"
+                android:layout_toRightOf="@+id/ratingBar"
+                android:text="266 views"
+                android:textSize="@dimen/sp20" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ratingBar"
+                android:layout_marginTop="@dimen/dp20" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

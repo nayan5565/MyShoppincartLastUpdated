@@ -1,0 +1,191 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/main_color"
+                android:gravity="center"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Shopping" />
+
+                <ImageView
+                    android:id="@+id/imgSearch"
+                    android:layout_width="@dimen/dp40"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_gravity="right"
+                    android:padding="@dimen/dp10"
+                    android:src="@drawable/search" />
+
+
+            </android.support.v7.widget.Toolbar>
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp150">
+
+                        <android.support.v4.view.ViewPager
+                            android:id="@+id/viewpager"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <android.support.design.widget.CoordinatorLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="@dimen/dp20" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recBrand"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="To Of The Week" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recTopWeek"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="NEW AND TRENDY" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recNewTrend"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recNewTrend2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recNewTrend3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+
+                        android:text="FLASH DETAILS" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recFlash"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="VIEW ALL" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recBanner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </ScrollView>
+
+
+        </LinearLayout>
+
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/navigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="#4D4D4D"
+            app:headerLayout="@layout/drawer_header"
+            app:itemIconTint="@color/white"
+            app:menu="@menu/drawer" />
+
+
+    </android.support.v4.widget.DrawerLayout>
+
+</LinearLayout>

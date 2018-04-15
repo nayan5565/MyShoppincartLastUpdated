@@ -1,0 +1,17 @@
+<resources>
+
+    <dimen name="dp400">400dp</dimen>
+
+    <string name="app_name">My Shopping</string>
+
+    <!--<string name="banner_ad_unit_id">ca-app-pub-3852049226216249/1709040413</string>-->
+    <string name="banner_ad_unit_id">ca-app-pub-1386205867680580/3024409355</string>
+    <!--<string name="banner_app_id">ca-app-pub-3852049226216249~9232307213</string>-->
+    <string name="banner_app_id">ca-app-pub-1386205867680580~9210543752</string>
+
+    <string name="banner_ad_unit_id_test">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="banner_app_id_test">ca-app-pub-3940256099942544~3347511713</string>
+
+    <color name="main_color1">#FE5339</color>
+    <color name="blue">#00f</color>
+</resources>

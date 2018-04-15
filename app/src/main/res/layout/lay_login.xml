@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="40dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:src="@drawable/candy_party_logo" />
+
+    <EditText
+        android:id="@+id/edtUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rounded_edt"
+        android:drawableLeft="@drawable/user"
+        android:drawablePadding="@dimen/dp10"
+        android:hint="Username"
+        android:inputType="text"
+        android:padding="@dimen/dp10"
+        android:textColor="@color/main_color"
+        android:textColorHint="@color/main_color" />
+
+    <EditText
+        android:id="@+id/edtPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtUser"
+        android:layout_marginTop="@dimen/dp20"
+        android:background="@drawable/rounded_edt"
+        android:drawableLeft="@drawable/pass"
+        android:drawablePadding="@dimen/dp10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="@dimen/dp10"
+        android:textColor="@color/main_color"
+        android:textColorHint="@color/main_color" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtPass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp20"
+        android:background="@color/main_color"
+        android:onClick="onLogin"
+        android:text="Login"
+        android:textColor="#fff" />
+    <Button
+        android:id="@+id/btnRegis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp20"
+        android:background="@color/main_color"
+        android:onClick="onRegis"
+        android:text="registration"
+        android:textColor="#fff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp40"
+        android:text="Forget username or password?"
+        android:textColor="@color/main_color" />
+
+</RelativeLayout>

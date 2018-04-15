@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:weightSum="4">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".5"
+        android:background="@color/colorAccent">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp20"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_back" />
+
+        <ImageView
+            android:id="@+id/imgClose"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp20"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_close" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Size and color choose"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp16"
+            android:textStyle="italic" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/lnColor"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/dp10"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_weight="1.5"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:text="COLOR : "
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnSize"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/dp15"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_weight="1.5"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SIZE : "
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnAddToCart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".5"
+        android:background="@color/colorAccent"
+        android:text="Add to cart"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp16" />
+
+</LinearLayout>

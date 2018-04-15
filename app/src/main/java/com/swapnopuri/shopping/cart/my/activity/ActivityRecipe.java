@@ -1,0 +1,785 @@
+package com.swapnopuri.shopping.cart.my.activity;
+
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.graphics.Color;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.youtube.player.YouTubeIntents;
+import com.swapnopuri.shopping.cart.my.R;
+import com.swapnopuri.shopping.cart.my.adapter.AdFooterTab;
+import com.swapnopuri.shopping.cart.my.adapter.AdSlideDetailsImage;
+import com.swapnopuri.shopping.cart.my.adapter.ColorAdapter;
+import com.swapnopuri.shopping.cart.my.adapter.SizeAdapter;
+import com.swapnopuri.shopping.cart.my.adapter.Sliding_Images_Adapter;
+import com.swapnopuri.shopping.cart.my.fragment.FragHomePage;
+import com.swapnopuri.shopping.cart.my.fragment.FragOrder;
+import com.swapnopuri.shopping.cart.my.fragment.FragProductDetails;
+import com.swapnopuri.shopping.cart.my.fragment.FragReviewNew;
+import com.swapnopuri.shopping.cart.my.fragment.FragSuppliment;
+import com.swapnopuri.shopping.cart.my.model.MOrderedItem;
+import com.swapnopuri.shopping.cart.my.model.MProduct;
+import com.swapnopuri.shopping.cart.my.model.MRecipe;
+import com.swapnopuri.shopping.cart.my.model.MVideo;
+import com.swapnopuri.shopping.cart.my.tools.AdsManager;
+import com.swapnopuri.shopping.cart.my.tools.DBManager;
+import com.swapnopuri.shopping.cart.my.tools.DownloadAsync;
+import com.swapnopuri.shopping.cart.my.tools.Global;
+import com.swapnopuri.shopping.cart.my.tools.MyApp;
+import com.swapnopuri.shopping.cart.my.tools.MyLog;
+import com.swapnopuri.shopping.cart.my.tools.Utils;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by Jewel on 7/15/2016.
+ */
+public class ActivityRecipe extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = ActivityRecipe.class.getSimpleName();
+    private static final int STORAGE_PERMISSION_CODE = 101;
+    public static MRecipe recipe;
+    public static int id, pos;
+    public TabLayout footerTab, footerTabFrag;
+    public static TextView tvTitle, tvTitleMat, tvTitleProcess, tvMaterial, tvProcess,
+            tvFav, tvShare, tvVideo, tvVideoNo, tvSource, tvPrice, tvDisPrice, tvDiscount, tvDcTitle, tvDiscripsion;
+    private ImageView imgFav, imgShare, imgVideo, imgBack, imgSearch, imgHeader, imgFragShopping;
+    private LinearLayout llFav, llShare, llVideo;
+    private RelativeLayout rlHeader;
+    private Toolbar toolbar;
+    private FrameLayout flVideo;
+    private ViewPager viewPager, viewPagerImage;
+    private AdFooterTab adapterFooter;
+    private int productId;
+    private Button btnBuy;
+    private ArrayList<MProduct> productArrayList;
+    MProduct mProduct;
+    private boolean isAddToCart;
+    public static LinearLayout lnSize, lnColor, len;
+    private RecyclerView recColor, recSize;
+    private SizeAdapter sizeAdapter;
+    private ColorAdapter colorAdapter;
+    private ImageView imgShopping;
+    public static LinearLayout lnFrag, lnRecipe;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private static ArrayList<Integer> footerIcons;
+    String state;
+    private static ActivityRecipe instance;
+    private Sliding_Images_Adapter sliding_images_adapter;
+    private AdSlideDetailsImage adSlideDetailsImage;
+
+    public static ActivityRecipe getInstance() {
+        instance = new ActivityRecipe();
+        return instance;
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        init();
+        slideImage();
+        setupInterstitialAd();
+        setupFooter();
+//        prepareDisplay2();
+        prepareDisplay();
+        saveToDB();
+        setupNavigation();
+        setupFooter2();
+        MyApp.getInstance().setupAnalytics("Recipe");
+    }
+
+    private void slideImage() {
+        MyLog.e("toppp", " size " + FragHomePage.topWeekArrayList.size());
+
+        if (FragHomePage.topWeekArrayList != null && FragHomePage.topWeekArrayList.size() > 0)
+            adSlideDetailsImage = new AdSlideDetailsImage(this, FragHomePage.topWeekArrayList) {
+                @Override
+                public void onClickItem(int position, View view) {
+                    Toast.makeText(ActivityRecipe.this, "details showSizeColor " + position, Toast.LENGTH_LONG).show();
+//                    Global.bannerLink = mBanner.getLink();
+//                HomeActivity.getInstance().openFragment();
+
+//                    startActivity(new Intent(ActivityRecipe.this, FragBannerLink.class));
+                }
+            };
+        viewPagerImage.setAdapter(adSlideDetailsImage);
+//        if (HomeActivity.bannerArrayList != null && HomeActivity.bannerArrayList.size() > 0)
+//            sliding_images_adapter = new Sliding_Images_Adapter(this, HomeActivity.bannerArrayList) {
+//                @Override
+//                public void onClickItem(int position, View view) {
+//                    Toast.makeText(ActivityRecipe.this, " showSizeColor", Toast.LENGTH_LONG).show();
+////                    Global.bannerLink = mBanner.getLink();
+////                HomeActivity.getInstance().openFragment();
+//
+////                    startActivity(new Intent(ActivityRecipe.this, FragBannerLink.class));
+//                }
+//            };
+//        viewPagerImage.setAdapter(sliding_images_adapter);
+    }
+
+    private void openFragment() {
+        lnRecipe.setVisibility(View.GONE);
+        lnFrag.setVisibility(View.VISIBLE);
+        setSupportActionBar(toolbar);
+
+
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        Fragment fragment = new FragOrder();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragContainer, fragment); // fragment container id in first parameter is the  container(Main layout id) of Activity
+        transaction.addToBackStack(null);  // this will manage backstack
+        transaction.commit();
+    }
+
+    private void prepareDisplay2() {
+        MyLog.e("list ", " size " + Global.products.get(id).getSize().size());
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager layoutManager2
+                = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recSize.setLayoutManager(layoutManager);
+        recColor.setLayoutManager(layoutManager2);
+        recColor.setAdapter(colorAdapter);
+        recSize.setAdapter(sizeAdapter);
+//        ActivityRecipeList.products.get(id).getSize().get(pos).setClick(1);
+//        ActivityRecipeList.products.get(id).getColors().get(pos).setClick(1);
+        colorAdapter.setData(Global.products.get(id).getColors());
+        sizeAdapter.setData(Global.products.get(id).getSize());
+    }
+
+    private void setupFooter2() {
+
+        footerTabFrag.setSelectedTabIndicatorHeight(0);
+
+
+        footerTabFrag.addTab(footerTabFrag.newTab().setText(Global.TAB_HOME_PAGE));
+        footerTabFrag.addTab(footerTabFrag.newTab().setText(Global.TAB_CATEGORY));
+        footerTabFrag.addTab(footerTabFrag.newTab().setText(Global.TAB_ORDER));
+        footerTabFrag.addTab(footerTabFrag.newTab().setText(Global.TAB_RECIPE));
+//        for (int i = 0; i < footerTab.getTabCount(); i++) {
+//            //noinspection ConstantConditions
+//            TextView tv = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+//            tv.setTextColor(Color.WHITE);
+//            Utils.setFont("AvenirNext-Regular", tv);
+//            footerTab.getTabAt(i).setCustomView(tv);
+//
+//        }
+        footerTabFrag.setTabTextColors(Color.WHITE, Color.WHITE);
+        for (int i = 0; i < footerTabFrag.getTabCount(); i++) {
+            footerTabFrag.getTabAt(i).setIcon(footerIcon(i, false));
+        }
+        footerTabFrag.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                MainActivity.selectTabPos = tab.getPosition();
+                switch (tab.getPosition()) {
+                    case 0:
+
+                        startActivity(new Intent(ActivityRecipe.this, MainActivity.class));
+                        finish();
+                        break;
+                    case 1:
+                        startActivity(new Intent(ActivityRecipe.this, MainActivity.class));
+                        finish();
+                        break;
+                    case 2:
+                        startActivity(new Intent(ActivityRecipe.this, MainActivity.class));
+                        finish();
+                        break;
+                    case 3:
+                        startActivity(new Intent(ActivityRecipe.this, MainActivity.class));
+                        finish();
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+//                if (tab.getPosition() == 0) {
+//                MainActivity.selectTabPos = tab.getPosition();
+//                startActivity(new Intent(ActivityRecipe.this, MainActivity.class));
+//                finish();
+////                }
+            }
+        });
+    }
+
+    private int footerIcon(int id, boolean isActive) {
+        if (footerIcons == null) {
+            footerIcons = new ArrayList<>();
+            footerIcons.add(R.drawable.icon_cat);
+            footerIcons.add(R.drawable.icon_cat);
+            footerIcons.add(R.drawable.icon_order);
+            footerIcons.add(R.drawable.icon_contact);
+
+            footerIcons.add(R.drawable.icon_cat_active);
+            footerIcons.add(R.drawable.icon_cat_active);
+            footerIcons.add(R.drawable.icon_order_active);
+            footerIcons.add(R.drawable.icon_contact_active);
+        }
+
+        return isActive ? footerIcons.get(id + 4) : footerIcons.get(id);
+
+    }
+
+    private void setupFooter() {
+        adapterFooter = new AdFooterTab(getSupportFragmentManager());
+        adapterFooter.addFragment(FragProductDetails.newInstance(recipe), Global.TAB_DETAIL);
+        adapterFooter.addFragment(FragSuppliment.newInstance(), Global.TAB_SUPPLIMENT);
+        adapterFooter.addFragment(FragReviewNew.newInstance(productId), Global.TAB_REVIEW);
+        viewPager.setAdapter(adapterFooter);
+        footerTab.setupWithViewPager(viewPager);
+        footerTab.setSelectedTabIndicatorHeight(5);
+        footerTab.setSelectedTabIndicatorColor(Color.parseColor("#4D4D4D"));
+        footerTab.setTabTextColors(Color.WHITE, Color.parseColor("#4D4D4D"));
+//        for (int i = 0; i < footerTab.getTabCount(); i++) {
+//            //noinspection ConstantConditions
+//            TextView tv = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+//            tv.setTextColor(Color.WHITE);
+//            Utils.setFont("AvenirNext-Regular", tv);
+//            footerTab.getTabAt(i).setCustomView(tv);
+//
+//        }
+
+
+    }
+
+
+    private void saveToDB() {
+        if (recipe != null && recipe.getView() != 2) {
+            recipe.setView(2);
+            DBManager.getInstance().addData(DBManager.TABLE_RECEIPE, recipe, "Id");
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void init() {
+        setContentView(R.layout.lay_recipe_new);
+        lnFrag = (LinearLayout) findViewById(R.id.fragment_container);
+        lnRecipe = (LinearLayout) findViewById(R.id.lnSingleList);
+        lnRecipe.setVisibility(View.VISIBLE);
+        lnFrag.setVisibility(View.GONE);
+        imgFragShopping = (ImageView) findViewById(R.id.imgOrderShopping);
+        imgShopping = (ImageView) findViewById(R.id.imgShopping);
+        imgShopping.setOnClickListener(this);
+        imgFragShopping.setOnClickListener(this);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        navigationView = (NavigationView) findViewById(R.id.navigationView);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        Utils.setFont("AvenirNext-Regular", mTitle);
+        imgSearch = (ImageView) findViewById(R.id.imgSearch);
+        imgSearch.setOnClickListener(this);
+        lnColor = (LinearLayout) findViewById(R.id.lnColor);
+        len = (LinearLayout) findViewById(R.id.len);
+        lnSize = (LinearLayout) findViewById(R.id.lnSize);
+//        toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPagerImage = (ViewPager) findViewById(R.id.viewpagerImage);
+        footerTab = (TabLayout) findViewById(R.id.footerTab_2);
+        footerTabFrag = (TabLayout) findViewById(R.id.footerTab);
+
+
+//        recColor = (RecyclerView) findViewById(R.id.recColor);
+//        recSize = (RecyclerView) findViewById(R.id.recSize);
+//        colorAdapter = new ColorAdapter(this);
+//        sizeAdapter = new SizeAdapter(this);
+//        btnBuy = (Button) findViewById(R.id.btnBuy);
+
+
+//        flVideo = (FrameLayout) findViewById(R.id.flVideo);
+//
+//        tvMaterial = ((TextView) findViewById(R.id.tvMaterials));
+//        tvProcess = ((TextView) findViewById(R.id.tvProcess));
+//        tvTitleMat = ((TextView) findViewById(R.id.tvTitleMat));
+//        tvTitleProcess = ((TextView) findViewById(R.id.tvTitleProcess));
+//        tvTitle = ((TextView) findViewById(R.id.tvTitle));
+//        tvSource = ((TextView) findViewById(R.id.tvSource));
+//
+//
+//        tvVideoNo = ((TextView) toolbar.findViewById(R.id.tvVideoNo));
+//
+//
+        imgBack = (ImageView) findViewById(R.id.imgBack);
+//        imgSearch = (ImageView) findViewById(R.id.imgSearch);
+//
+//        tvFav = ((TextView) findViewById(R.id.tvFav));
+//        tvShare = ((TextView) findViewById(R.id.tvShare));
+//        tvVideo = ((TextView) findViewById(R.id.tvBuy));
+
+//        tvPrice = ((TextView) findViewById(R.id.tvPrice));
+//        tvDisPrice = ((TextView) findViewById(R.id.tvDisPrice));
+
+
+        tvDiscripsion = ((TextView) findViewById(R.id.tvDiscripsion));
+
+
+//        tvDiscount = ((TextView) findViewById(R.id.tvDiscount));
+//        tvDcTitle = ((TextView) findViewById(R.id.tvDcTitle));
+//
+//        Utils.setFont("AvenirNext-Regular", tvPrice, btnBuy, tvDiscripsion, tvDiscount, tvDcTitle, tvDisPrice);
+//        Utils.setFont("AvenirNext-DemiBold", tvDiscount, tvDisPrice);
+
+
+        imgFav = (ImageView) findViewById(R.id.imgFav);
+//        imgShare = (ImageView) findViewById(R.id.imgShare);
+//        imgVideo = (ImageView) findViewById(R.id.imgVideo);
+//        imgHeader = (ImageView) findViewById(R.id.img);
+//        imgHeader.setOnClickListener(this);
+
+//        imgSearch.setVisibility(View.GONE);
+//
+//        llFav = (LinearLayout) findViewById(R.id.llFav);
+//        llShare = (LinearLayout) findViewById(R.id.llShare);
+//        llVideo = (LinearLayout) findViewById(R.id.llVideo);
+//        rlHeader = (RelativeLayout) findViewById(R.id.llHeader);
+
+
+//        btnBuy.setOnClickListener(this);
+        imgFav.setOnClickListener(this);
+//        llFav.setOnClickListener(this);
+//        llShare.setOnClickListener(this);
+//        llVideo.setOnClickListener(this);
+//        rlHeader.setOnClickListener(this);
+//
+        imgBack.setOnClickListener(this);
+//        flVideo.setOnClickListener(this);
+////        imgSearch.setOnClickListener(this);
+//        tvSource.setOnClickListener(this);
+        if (getIntent() != null && getIntent().hasExtra("productId")) {
+            productId = getIntent().getIntExtra("productId", 0);
+        }
+        if (FragOrder.currentOrderIds != null)
+            isAddToCart = FragOrder.currentOrderIds.contains(productId);
+//        AdsManager.getInstance(this).setupBannerAd(R.id.adView);
+
+    }
+
+    private void setupInterstitialAd() {
+
+        int recipeViewCount = Integer.parseInt(Utils.getPref(Global.REF_INTERSTITIAL, "0"));
+        recipeViewCount++;
+        Utils.savePref(Global.REF_INTERSTITIAL, recipeViewCount + "");
+        if (recipeViewCount >= Global.LIMIT_RECIPE_INTERSTITIAL) {
+            Utils.savePref(Global.REF_INTERSTITIAL, "0");
+            AdsManager.getInstance(this).showInterstisial();
+
+        }
+
+    }
+
+    private void setupNavigation() {
+        state = Utils.getPref("profile2", Global.STATE_TUT);
+        Menu menu = navigationView.getMenu();
+        MenuItem target = menu.findItem(R.id.mnuLogout);
+        if (state.equals(Global.STATE_PROFILE2)) {
+            target.setVisible(true);
+
+        } else {
+            target.setVisible(false);
+
+        }
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                drawerLayout.closeDrawers();
+                switch (menuItem.getItemId()) {
+                    case R.id.mnuAbout:
+                        Utils.showDialog(ActivityRecipe.this, "App Version", "Version 1.0.2");
+                        break;
+                    case R.id.mnuFav:
+                        footerTabFrag.getTabAt(2).select();
+                        break;
+                    case R.id.mnuHome:
+                        footerTabFrag.getTabAt(0).select();
+//                        startActivity(new Intent(ActivityRecipe.this, HomeActivity.class));
+//                        finish();
+                        break;
+                    case R.id.mnuCategory:
+                        footerTabFrag.getTabAt(1).select();
+                        break;
+                    case R.id.mnuAsk:
+                        footerTabFrag.getTabAt(3).select();
+
+                        break;
+                    case R.id.mnuHalnagad:
+                        //halnagad();
+                        break;
+                    case R.id.mnuProfile:
+//                        state = Utils.getPref("profile2", Global.STATE_TUT);
+//                        MyLog.e("state", " is " + state);
+                        Utils.savePref("profile", Global.STATE_PROFILE);
+                        if (state.equals(Global.STATE_PROFILE2)) {
+                            ProfileActivity.start(ActivityRecipe.this);
+                        } else {
+                            RegistrationActivity.start(ActivityRecipe.this);
+                        }
+
+                        break;
+                    case R.id.mnuFavorite:
+                        FavoriteActivity.start(ActivityRecipe.this);
+                        break;
+                    case R.id.mnuLogout:
+                        Utils.clearPref();
+                        LoginActivity.start(ActivityRecipe.this);
+                        finish();
+                        break;
+                }
+                return true;
+            }
+        });
+
+    }
+
+    public static float getRealPrice() {
+        return Global.products.get(id).getSize().get(pos).getPrice() - Global.products.get(id).getSize().get(pos).getPrice() * (Global.products.get(id).getSize().get(pos).getDiscountRate() / 100f);
+    }
+
+    private void prepareDisplay() {
+//        Utils.setFont(tvTitleMat, tvTitleProcess, tvTitle, tvMaterial, tvProcess, tvShare, tvFav, tvVideo, tvVideoNo);
+
+//        getSupportActionBar().setTitle("");
+//        tvVideoNo.setText(Utils.convertNum(getVideoNo() + ""));
+//        MyLog.e("pos", " is " + pos);
+//        if (Global.products.get(id).getSize().get(pos).getDiscountRate() == 0) {
+//            tvDcTitle.setVisibility(View.GONE);
+//            tvDiscount.setVisibility(View.GONE);
+//            tvDisPrice.setVisibility(View.GONE);
+//            tvPrice.setText(Global.products.get(id).getSize().get(pos).getPrice() + " €");
+//        } else {
+//            tvDcTitle.setVisibility(View.VISIBLE);
+//            tvDiscount.setVisibility(View.VISIBLE);
+//            tvDisPrice.setVisibility(View.VISIBLE);
+//            tvDiscount.setText(Global.products.get(id).getSize().get(pos).getDiscountRate() + "%");
+//            tvDisPrice.setText(String.format("%.2f", calculateDiscountPrice()) + " €");
+//            tvPrice.setText(Global.products.get(id).getSize().get(pos).getPrice() + " €");
+//            tvPrice.setPaintFlags(tvPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+//        }
+//        btnBuy.setText(isAddToCart ? "REMOVE TO CART" : "ADD TO CART");
+//        btnBuy.setTextColor(isAddToCart ? Color.BLACK : Color.WHITE);
+//        btnBuy.setBackgroundColor(isAddToCart ? Color.parseColor("#F8E71C") : Color.parseColor("#222222"));
+
+
+        if (recipe != null) {
+//            tvTitle.setText(recipe.getTitle());
+//            Picasso.with(this).load(Global.API_BASE_BACKEND + recipe.getPhoto()).into(imgHeader);
+//            tvMaterial.setText(recipe.getIngredients());
+//            tvProcess.setText(recipe.getProcess());
+            tvDiscripsion.setText(recipe.getTitle());
+            Utils.setFont("AvenirNext-Regular", tvDiscripsion);
+            imgFav.setImageResource(recipe.getFav() == 1 ? R.drawable.favorite_active : R.drawable.favorite);
+//            imgVideo.setImageResource(recipe.getVideo().length() > 0 ? R.drawable.icon_camera_selected : R.drawable.icon_video_button);
+            MyLog.e("Image", " single " + Global.singleImageURL);
+            MyLog.e("Image", " single2 " + Global.products.get(id).getThumb());
+            MyLog.e("Image", " single3 " + recipe.getThumb());
+            MyLog.e("Image", " single4 " + recipe.getPPhoto());
+            MyLog.e("Image", " title " + recipe.getTitle());
+
+//            if (recipe.getThumb() != null && !recipe.getThumb().equals("") && !recipe.getThumb().equals("null")) {
+////            if (FragCategoryList.image == 1)
+//                Picasso.with(this).load(recipe.getThumb()).placeholder(R.drawable.placeholder).into(imgHeader);
+////            else if (SubCategoryActivity.image == 2) {
+////                Picasso.with(this).load(recipe.getPhoto()).placeholder(R.drawable.placeholder).into(imgHeader);
+////            }
+//            }
+
+        }
+    }
+
+    private int getVideoNo() {
+        return DBManager.getInstance().getData(DBManager.TABLE_VIDEO, new MVideo()).size();
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.imgFav:
+                if (recipe.getFav() == 0) {
+                    recipe.setFav(1);
+                    Utils.showDialog(ActivityRecipe.this, Global.MSG_THANKS, Global.MSG_LIKE_RECIPE);
+                } else
+                    recipe.setFav(0);
+                ((ImageView) findViewById(R.id.imgFav)).setImageResource(recipe.getFav() == 1 ? R.drawable.favorite_active : R.drawable.favorite);
+//                DBManager.getInstance().addData(DBManager.TABLE_RECEIPE, recipe, "Id");
+                DBManager.getInstance().addRecipeData(recipe, true, DBManager.TABLE_RECEIPE);
+                break;
+//            case R.id.llShare:
+//                //TODO develop FB Share logic
+////                fbShare();
+//                shareOnFB();
+//                break;
+//            case R.id.llVideo:
+//                addToCart();
+//                break;
+//            case R.id.llHeader:
+//                ImageSliderActivity.start(ActivityRecipe.this, productId);
+//                break;
+            case R.id.btnBuy:
+                addToCart();
+                break;
+            case R.id.img:
+                startActivity(new Intent(ActivityRecipe.this, SlidingImageActivity.class));
+                finish();
+                break;
+
+            case R.id.imgBack:
+                startActivity(new Intent(ActivityRecipe.this, MainActivity.class));
+                finish();
+                break;
+            case R.id.imgShopping:
+//                Global.orderLayoutDissmiss = 1;
+                openFragment();
+                break;
+            case R.id.imgOrderShopping:
+                footerTabFrag.getTabAt(2).select();
+                break;
+            case R.id.imgSearch:
+                startActivity(new Intent(ActivityRecipe.this, SearchActivity.class));
+                finish();
+                break;
+//
+//            case R.id.flVideo:
+//                startActivity(new Intent(ActivityRecipe.this, ActivityVideo.class));
+//                break;
+//
+//            case R.id.imgSearch:
+//                startActivity(new Intent(ActivityRecipe.this, SearchActivity.class));
+//                break;
+//
+//            case R.id.tvSource:
+//                if (Utils.isInternetOn())
+//                    ActivityWebview.open(ActivityRecipe.this, recipe.getId());
+//                else
+//                    Utils.showDialog(ActivityRecipe.this, Global.MSG_SORRY, Global.MSG_NO_INTERNET);
+//                break;
+
+        }
+    }
+
+    private void addToCart() {
+        MOrderedItem orderedItem = new MOrderedItem();
+        orderedItem.setId(recipe.getId());
+        orderedItem.setAmount(recipe.getPrice());
+//        orderedItem.setColor(Color.RED);
+//                    orderedItem.setOrderId(FragOrder.getOrderId());
+        orderedItem.setQuantity(1);
+        orderedItem.setThumb(recipe.getThumb());
+        orderedItem.setTitle(recipe.getTitle());
+        orderedItem.setDate(Utils.getDateTime());
+        orderedItem.setUserId(Utils.getUser().getId());
+
+
+        FragOrder.addCurrentItems(orderedItem);
+        isAddToCart = !isAddToCart;
+        btnBuy.setText(isAddToCart ? "REMOVE TO CART" : "ADD TO CART");
+        btnBuy.setTextColor(isAddToCart ? Color.BLACK : Color.WHITE);
+        btnBuy.setBackgroundColor(isAddToCart ? Color.parseColor("#F8E71C") : Color.parseColor("#222222"));
+        Utils.showToast(isAddToCart ? "Successfully added to cart" : "Successfully removed from cart");
+    }
+
+    private boolean checkPermission() {
+        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        }
+        return false;
+    }
+
+    private void requestStoragePermission() {
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            //If the user has denied the permission previously your code will come to this block
+            //Here you can explain why you need this permission
+            //Explain here why you need this permission
+        }
+
+        //And finally ask for the permission
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        //Checking the request code of our request
+        if (requestCode == STORAGE_PERMISSION_CODE) {
+
+            //If permission is granted
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                playVideo();
+            } else {
+                //Displaying another toast if permission is not granted
+                Toast.makeText(this, "Oops you just denied the permission", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private void playVideo() {
+        // if no video is available
+        if (recipe.getVideo() == null || recipe.getVideo().equals("")) {
+            Utils.showDialog(this, Global.MSG_TITLE_NO_VIDEO, Global.MSG_NO_VIDEO);
+            return;
+        }
+
+        //getting filename only
+        String fileName = recipe.getVideo().substring(recipe.getVideo().lastIndexOf("/") + 1);
+
+        if (recipe.getVideo().startsWith("https")) {
+            if (!Utils.isInternetOn()) {
+                Utils.showDialog(ActivityRecipe.this, Global.MSG_SORRY, Global.MSG_NO_INTERNET);
+                return;
+            }
+            String videoId = recipe.getVideo().substring(recipe.getVideo().lastIndexOf(".be/") + 4);
+            playYoutubeVideo(videoId);
+
+
+        } else {
+            File fDir = null;
+            fDir = new File(Utils.getPath(fileName));
+            if (!fDir.exists()) {
+                MyLog.e("FILE", "file not extists:" + fDir);
+                if (!Utils.isInternetOn()) {
+                    Utils.showDialog(ActivityRecipe.this, Global.MSG_SORRY, Global.MSG_NO_INTERNET);
+                    return;
+                }
+                if (checkPermission())
+                    new DownloadAsync(this, fDir.getAbsolutePath(), recipe.getTitle()).execute(Global.API_BASE_BACKEND + recipe.getVideo());
+                else
+                    requestStoragePermission();
+            } else {
+
+                ActivityVideoPlayer.start(this, recipe.getTitle(), fDir.getAbsolutePath(), recipe.getId());
+            }
+        }
+    }
+
+    private void playYoutubeVideo(String videoId) {
+        Intent intent = YouTubeIntents.createPlayVideoIntentWithOptions(this, videoId, true, false);
+        startActivity(intent);
+    }
+
+
+    private void fbShare() {
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+//        sharingIntent.setType("image/jpeg");
+//        sharingIntent.putExtra(Intent.EXTRA_STREAM, screenshotUri);
+        sharingIntent.setType("text/plain");
+//        sharingIntent.setType("message/rfc822");
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, Global.APK_LINK);
+        startActivity(Intent.createChooser(sharingIntent, "BR Share"));
+    }
+
+    public void shareFB() {
+
+        String text = "Look at my awesome picture";
+        Uri pictureUri = Uri.parse("file://my_picture");
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, text);
+        shareIntent.putExtra(Intent.EXTRA_STREAM, pictureUri);
+        shareIntent.setType("image/*");
+        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        startActivity(Intent.createChooser(shareIntent, "Share images..."));
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        lnRecipe.setVisibility(View.VISIBLE);
+        lnFrag.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        MyLog.e("diss", " " + Global.orderLayoutDissmiss);
+        lnRecipe.setVisibility(View.VISIBLE);
+        lnFrag.setVisibility(View.GONE);
+//        if (Global.orderLayoutDissmiss == 1) {
+//            Intent intent = new Intent(ActivityRecipe.this, ActivityRecipeList.class);
+//            startActivity(intent);
+//        } else {
+//            Intent intent = new Intent(ActivityRecipe.this, HomeActivity.class);
+//            startActivity(intent);
+//        }
+//        finish();
+
+
+    }
+
+    public void shareOnFB() {
+        boolean found = false;
+        Intent share = new Intent(Intent.ACTION_SEND);
+//        share.setType("image/jpeg");
+        share.setType("text/plain");
+        // gets the list of intents that can be loaded.
+        List<ResolveInfo> resInfo = MyApp.getInstance().getPackageManager().queryIntentActivities(share, 0);
+        if (!resInfo.isEmpty()) {
+            for (ResolveInfo info : resInfo) {
+                if (info.activityInfo.packageName.toLowerCase().contains("face") ||
+                        info.activityInfo.name.toLowerCase().contains("face")) {
+                    share.putExtra(Intent.EXTRA_SUBJECT, "subject");
+                    share.putExtra(Intent.EXTRA_TEXT, Global.APK_LINK);
+//                    share.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(myPath)) ); // Optional, just if you wanna share an image.
+                    share.setPackage(info.activityInfo.packageName);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+                return;
+
+
+            startActivity(Intent.createChooser(share, "Select"));
+        }
+    }
+}

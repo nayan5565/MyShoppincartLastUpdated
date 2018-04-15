@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/sp10"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp"
+    android:paddingTop="@dimen/sp10">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Title"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <TextView
+
+        android:id="@+id/tvDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Details"
+        android:textColor="#000" />
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btnOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Okay"
+            android:textColor="#0879F3" />
+        <Button
+            android:visibility="gone"
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Cancel"
+            android:textColor="#0879F3" />
+    </LinearLayout>
+
+
+</LinearLayout>

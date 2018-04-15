@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/sp10">
+
+        <TextView
+            android:id="@+id/tvToTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:padding="@dimen/sp10"
+            android:text="TO :"
+            android:textColor="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/tvTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:padding="@dimen/sp10"
+            android:text="New Text"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/tvFromTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:padding="@dimen/sp10"
+            android:text="FROM"
+            android:textColor="@color/colorAccent" />
+
+        <EditText
+            android:id="@+id/edtFrom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:inputType="textEmailAddress"
+            android:padding="@dimen/dp10"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/tvSubTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:padding="@dimen/sp10"
+            android:text="SUBJECT  :"
+            android:textColor="@color/colorAccent" />
+
+        <EditText
+            android:id="@+id/edtSubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:inputType="textEmailAddress"
+            android:padding="@dimen/dp10"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/tvDetailsTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:padding="@dimen/sp10"
+            android:text="DETAILS :"
+            android:textColor="@color/colorAccent" />
+
+        <EditText
+            android:id="@+id/edtDetails"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="@dimen/dp10"
+            android:gravity="top|left"
+            android:inputType="textMultiLine"
+            android:padding="@dimen/dp10"
+            android:textColor="#000" />
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/colorAccent"
+            android:text="SEND"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+</ScrollView>

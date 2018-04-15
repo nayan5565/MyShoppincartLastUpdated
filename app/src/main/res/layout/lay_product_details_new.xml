@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6.5">
+
+        <LinearLayout
+            android:id="@+id/ln"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvMaterials"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp10"
+                android:lineSpacingExtra="@dimen/dp10"
+                android:textColor="#000000"
+                android:textSize="@dimen/sp18" />
+
+            <TextView
+                android:id="@+id/tvProcess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp10"
+                android:lineSpacingExtra="@dimen/dp10"
+                android:textColor="#000000" />
+        </LinearLayout>
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/lnColor"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@+id/lnSize"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnSize"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@+id/len"
+        android:layout_marginBottom="@dimen/dp5"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight=".3"/>-->
+
+
+    <LinearLayout
+        android:id="@+id/len"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/relPriceInform"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp5"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="$123"
+                android:textColor="#000" />
+
+            <TextView
+                android:id="@+id/tvDisPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPrice"
+                android:text="$123"
+                android:textColor="#000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvDiscount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="20%"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDcTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tvDiscount"
+                android:layout_marginRight="@dimen/dp5"
+                android:text="Discount"
+                android:textColor="#000" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnBuy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#F8E71c"
+            android:text="ADD TO CART"
+            android:textColor="#000" />
+    </LinearLayout>
+</LinearLayout>
