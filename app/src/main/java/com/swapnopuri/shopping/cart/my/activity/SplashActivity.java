@@ -70,9 +70,9 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void init() {
-        tvTitle = (TextView) findViewById(R.id.tvTitle);
-        tvTitle3 = (TextView) findViewById(R.id.tvTitle3);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        tvTitle = findViewById(R.id.tvTitle);
+        tvTitle3 =  findViewById(R.id.tvTitle3);
+        progressBar =  findViewById(R.id.progressBar);
         gson = new Gson();
         Utils.setFont("AvenirNext-Regular", tvTitle, tvTitle3);
         requestQueue = VolleySingleton.getInstance().getRequestQueue();

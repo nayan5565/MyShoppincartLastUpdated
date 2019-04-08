@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.swapnopuri.shopping.cart.my"
-        minSdkVersion 15
-        targetSdkVersion 27
+        minSdkVersion 21
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -20,33 +20,34 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    compile files('libs/dagger-2.1.jar')
-    compile files('libs/javax.inject-1.jar')
-    compile files('libs/vungle-publisher-adaptive-id-3.3.5.jar')
-    compile files('libs/YouTubeAndroidPlayerApi.jar')
-    compile 'com.android.support:appcompat-v7:27.0.2'
-    compile 'com.android.support:design:27.0.2'
-    compile 'com.android.support:recyclerview-v7:27.0.2'
-    compile 'me.relex:circleindicator:1.2.2'
-    compile 'com.google.code.gson:gson:2.8.2'
-    compile 'com.android.volley:volley:1.0.0'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'net.zetetic:android-database-sqlcipher:3.5.3'
-    compile 'com.github.rtoshiro.fullscreenvideoview:fullscreenvideoview:1.1.1'
-    compile 'com.google.android.gms:play-services-analytics:11.8.0'
-    compile 'com.loopj.android:android-async-http:1.4.9'
-    compile 'com.daimajia.slider:library:1.1.5@aar'
-    compile 'com.nineoldandroids:library:2.4.0'
-    compile 'it.xabaras.android:viewpagerindicator:1.0'
-    compile 'com.android.support:cardview-v7:27.0.2'
+    implementation files('libs/dagger-2.1.jar')
+    implementation files('libs/javax.inject-1.jar')
+    implementation files('libs/vungle-publisher-adaptive-id-3.3.5.jar')
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'me.relex:circleindicator:1.2.2'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.android.volley:volley:1.1.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'net.zetetic:android-database-sqlcipher:3.5.3'
+    implementation 'com.github.rtoshiro.fullscreenvideoview:fullscreenvideoview:1.1.1'
+    implementation 'com.google.android.gms:play-services-analytics:16.0.8'
+    implementation 'com.loopj.android:android-async-http:1.4.9'
+    implementation 'com.daimajia.slider:library:1.1.5@aar'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'it.xabaras.android:viewpagerindicator:1.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
 
 
-    implementation 'com.android.support:appcompat-v7:27.0.2'
-    implementation 'com.google.firebase:firebase-ads:11.8.0'
-    implementation 'com.google.firebase:firebase-messaging:11.8.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.google.firebase:firebase-ads:17.2.0'
+    implementation 'com.google.firebase:firebase-messaging:17.6.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
 

@@ -303,104 +303,42 @@ public class ActivityRecipe extends AppCompatActivity implements View.OnClickLis
 
     private void init() {
         setContentView(R.layout.lay_recipe_new);
-        lnFrag = (LinearLayout) findViewById(R.id.fragment_container);
-        lnRecipe = (LinearLayout) findViewById(R.id.lnSingleList);
+        lnFrag = findViewById(R.id.fragment_container);
+        lnRecipe = findViewById(R.id.lnSingleList);
         lnRecipe.setVisibility(View.VISIBLE);
         lnFrag.setVisibility(View.GONE);
-        imgFragShopping = (ImageView) findViewById(R.id.imgOrderShopping);
-        imgShopping = (ImageView) findViewById(R.id.imgShopping);
+        imgFragShopping = findViewById(R.id.imgOrderShopping);
+        imgShopping = findViewById(R.id.imgShopping);
         imgShopping.setOnClickListener(this);
         imgFragShopping.setOnClickListener(this);
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        navigationView = (NavigationView) findViewById(R.id.navigationView);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        drawerLayout = findViewById(R.id.drawerLayout);
+        navigationView = findViewById(R.id.navigationView);
+        toolbar = findViewById(R.id.toolbar);
+        TextView mTitle = toolbar.findViewById(R.id.toolbar_title);
         Utils.setFont("AvenirNext-Regular", mTitle);
-        imgSearch = (ImageView) findViewById(R.id.imgSearch);
+        imgSearch = findViewById(R.id.imgSearch);
         imgSearch.setOnClickListener(this);
-        lnColor = (LinearLayout) findViewById(R.id.lnColor);
-        len = (LinearLayout) findViewById(R.id.len);
-        lnSize = (LinearLayout) findViewById(R.id.lnSize);
-//        toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPagerImage = (ViewPager) findViewById(R.id.viewpagerImage);
-        footerTab = (TabLayout) findViewById(R.id.footerTab_2);
-        footerTabFrag = (TabLayout) findViewById(R.id.footerTab);
+        lnColor = findViewById(R.id.lnColor);
+        len = findViewById(R.id.len);
+        lnSize = findViewById(R.id.lnSize);
+        viewPager = findViewById(R.id.viewpager);
+        viewPagerImage = findViewById(R.id.viewpagerImage);
+        footerTab = findViewById(R.id.footerTab_2);
+        footerTabFrag = findViewById(R.id.footerTab);
 
 
-//        recColor = (RecyclerView) findViewById(R.id.recColor);
-//        recSize = (RecyclerView) findViewById(R.id.recSize);
-//        colorAdapter = new ColorAdapter(this);
-//        sizeAdapter = new SizeAdapter(this);
-//        btnBuy = (Button) findViewById(R.id.btnBuy);
+        tvDiscripsion = findViewById(R.id.tvDiscripsion);
 
 
-//        flVideo = (FrameLayout) findViewById(R.id.flVideo);
-//
-//        tvMaterial = ((TextView) findViewById(R.id.tvMaterials));
-//        tvProcess = ((TextView) findViewById(R.id.tvProcess));
-//        tvTitleMat = ((TextView) findViewById(R.id.tvTitleMat));
-//        tvTitleProcess = ((TextView) findViewById(R.id.tvTitleProcess));
-//        tvTitle = ((TextView) findViewById(R.id.tvTitle));
-//        tvSource = ((TextView) findViewById(R.id.tvSource));
-//
-//
-//        tvVideoNo = ((TextView) toolbar.findViewById(R.id.tvVideoNo));
-//
-//
-        imgBack = (ImageView) findViewById(R.id.imgBack);
-//        imgSearch = (ImageView) findViewById(R.id.imgSearch);
-//
-//        tvFav = ((TextView) findViewById(R.id.tvFav));
-//        tvShare = ((TextView) findViewById(R.id.tvShare));
-//        tvVideo = ((TextView) findViewById(R.id.tvBuy));
-
-//        tvPrice = ((TextView) findViewById(R.id.tvPrice));
-//        tvDisPrice = ((TextView) findViewById(R.id.tvDisPrice));
-
-
-        tvDiscripsion = ((TextView) findViewById(R.id.tvDiscripsion));
-
-
-//        tvDiscount = ((TextView) findViewById(R.id.tvDiscount));
-//        tvDcTitle = ((TextView) findViewById(R.id.tvDcTitle));
-//
-//        Utils.setFont("AvenirNext-Regular", tvPrice, btnBuy, tvDiscripsion, tvDiscount, tvDcTitle, tvDisPrice);
-//        Utils.setFont("AvenirNext-DemiBold", tvDiscount, tvDisPrice);
-
-
-        imgFav = (ImageView) findViewById(R.id.imgFav);
-//        imgShare = (ImageView) findViewById(R.id.imgShare);
-//        imgVideo = (ImageView) findViewById(R.id.imgVideo);
-//        imgHeader = (ImageView) findViewById(R.id.img);
-//        imgHeader.setOnClickListener(this);
-
-//        imgSearch.setVisibility(View.GONE);
-//
-//        llFav = (LinearLayout) findViewById(R.id.llFav);
-//        llShare = (LinearLayout) findViewById(R.id.llShare);
-//        llVideo = (LinearLayout) findViewById(R.id.llVideo);
-//        rlHeader = (RelativeLayout) findViewById(R.id.llHeader);
-
-
-//        btnBuy.setOnClickListener(this);
+        imgFav = findViewById(R.id.imgFav);
         imgFav.setOnClickListener(this);
-//        llFav.setOnClickListener(this);
-//        llShare.setOnClickListener(this);
-//        llVideo.setOnClickListener(this);
-//        rlHeader.setOnClickListener(this);
 //
         imgBack.setOnClickListener(this);
-//        flVideo.setOnClickListener(this);
-////        imgSearch.setOnClickListener(this);
-//        tvSource.setOnClickListener(this);
         if (getIntent() != null && getIntent().hasExtra("productId")) {
             productId = getIntent().getIntExtra("productId", 0);
         }
         if (FragOrder.currentOrderIds != null)
             isAddToCart = FragOrder.currentOrderIds.contains(productId);
-//        AdsManager.getInstance(this).setupBannerAd(R.id.adView);
 
     }
 
@@ -455,8 +393,6 @@ public class ActivityRecipe extends AppCompatActivity implements View.OnClickLis
                         //halnagad();
                         break;
                     case R.id.mnuProfile:
-//                        state = Utils.getPref("profile2", Global.STATE_TUT);
-//                        MyLog.e("state", " is " + state);
                         Utils.savePref("profile", Global.STATE_PROFILE);
                         if (state.equals(Global.STATE_PROFILE2)) {
                             ProfileActivity.start(ActivityRecipe.this);
@@ -485,53 +421,12 @@ public class ActivityRecipe extends AppCompatActivity implements View.OnClickLis
     }
 
     private void prepareDisplay() {
-//        Utils.setFont(tvTitleMat, tvTitleProcess, tvTitle, tvMaterial, tvProcess, tvShare, tvFav, tvVideo, tvVideoNo);
-
-//        getSupportActionBar().setTitle("");
-//        tvVideoNo.setText(Utils.convertNum(getVideoNo() + ""));
-//        MyLog.e("pos", " is " + pos);
-//        if (Global.products.get(id).getSize().get(pos).getDiscountRate() == 0) {
-//            tvDcTitle.setVisibility(View.GONE);
-//            tvDiscount.setVisibility(View.GONE);
-//            tvDisPrice.setVisibility(View.GONE);
-//            tvPrice.setText(Global.products.get(id).getSize().get(pos).getPrice() + " €");
-//        } else {
-//            tvDcTitle.setVisibility(View.VISIBLE);
-//            tvDiscount.setVisibility(View.VISIBLE);
-//            tvDisPrice.setVisibility(View.VISIBLE);
-//            tvDiscount.setText(Global.products.get(id).getSize().get(pos).getDiscountRate() + "%");
-//            tvDisPrice.setText(String.format("%.2f", calculateDiscountPrice()) + " €");
-//            tvPrice.setText(Global.products.get(id).getSize().get(pos).getPrice() + " €");
-//            tvPrice.setPaintFlags(tvPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-//        }
-//        btnBuy.setText(isAddToCart ? "REMOVE TO CART" : "ADD TO CART");
-//        btnBuy.setTextColor(isAddToCart ? Color.BLACK : Color.WHITE);
-//        btnBuy.setBackgroundColor(isAddToCart ? Color.parseColor("#F8E71C") : Color.parseColor("#222222"));
 
 
         if (recipe != null) {
-//            tvTitle.setText(recipe.getTitle());
-//            Picasso.with(this).load(Global.API_BASE_BACKEND + recipe.getPhoto()).into(imgHeader);
-//            tvMaterial.setText(recipe.getIngredients());
-//            tvProcess.setText(recipe.getProcess());
             tvDiscripsion.setText(recipe.getTitle());
             Utils.setFont("AvenirNext-Regular", tvDiscripsion);
             imgFav.setImageResource(recipe.getFav() == 1 ? R.drawable.favorite_active : R.drawable.favorite);
-//            imgVideo.setImageResource(recipe.getVideo().length() > 0 ? R.drawable.icon_camera_selected : R.drawable.icon_video_button);
-            MyLog.e("Image", " single " + Global.singleImageURL);
-            MyLog.e("Image", " single2 " + Global.products.get(id).getThumb());
-            MyLog.e("Image", " single3 " + recipe.getThumb());
-            MyLog.e("Image", " single4 " + recipe.getPPhoto());
-            MyLog.e("Image", " title " + recipe.getTitle());
-
-//            if (recipe.getThumb() != null && !recipe.getThumb().equals("") && !recipe.getThumb().equals("null")) {
-////            if (FragCategoryList.image == 1)
-//                Picasso.with(this).load(recipe.getThumb()).placeholder(R.drawable.placeholder).into(imgHeader);
-////            else if (SubCategoryActivity.image == 2) {
-////                Picasso.with(this).load(recipe.getPhoto()).placeholder(R.drawable.placeholder).into(imgHeader);
-////            }
-//            }
-
         }
     }
 
@@ -553,17 +448,6 @@ public class ActivityRecipe extends AppCompatActivity implements View.OnClickLis
 //                DBManager.getInstance().addData(DBManager.TABLE_RECEIPE, recipe, "Id");
                 DBManager.getInstance().addRecipeData(recipe, true, DBManager.TABLE_RECEIPE);
                 break;
-//            case R.id.llShare:
-//                //TODO develop FB Share logic
-////                fbShare();
-//                shareOnFB();
-//                break;
-//            case R.id.llVideo:
-//                addToCart();
-//                break;
-//            case R.id.llHeader:
-//                ImageSliderActivity.start(ActivityRecipe.this, productId);
-//                break;
             case R.id.btnBuy:
                 addToCart();
                 break;
@@ -587,22 +471,6 @@ public class ActivityRecipe extends AppCompatActivity implements View.OnClickLis
                 startActivity(new Intent(ActivityRecipe.this, SearchActivity.class));
                 finish();
                 break;
-//
-//            case R.id.flVideo:
-//                startActivity(new Intent(ActivityRecipe.this, ActivityVideo.class));
-//                break;
-//
-//            case R.id.imgSearch:
-//                startActivity(new Intent(ActivityRecipe.this, SearchActivity.class));
-//                break;
-//
-//            case R.id.tvSource:
-//                if (Utils.isInternetOn())
-//                    ActivityWebview.open(ActivityRecipe.this, recipe.getId());
-//                else
-//                    Utils.showDialog(ActivityRecipe.this, Global.MSG_SORRY, Global.MSG_NO_INTERNET);
-//                break;
-
         }
     }
 
@@ -610,8 +478,6 @@ public class ActivityRecipe extends AppCompatActivity implements View.OnClickLis
         MOrderedItem orderedItem = new MOrderedItem();
         orderedItem.setId(recipe.getId());
         orderedItem.setAmount(recipe.getPrice());
-//        orderedItem.setColor(Color.RED);
-//                    orderedItem.setOrderId(FragOrder.getOrderId());
         orderedItem.setQuantity(1);
         orderedItem.setThumb(recipe.getThumb());
         orderedItem.setTitle(recipe.getTitle());
@@ -744,15 +610,6 @@ public class ActivityRecipe extends AppCompatActivity implements View.OnClickLis
         MyLog.e("diss", " " + Global.orderLayoutDissmiss);
         lnRecipe.setVisibility(View.VISIBLE);
         lnFrag.setVisibility(View.GONE);
-//        if (Global.orderLayoutDissmiss == 1) {
-//            Intent intent = new Intent(ActivityRecipe.this, ActivityRecipeList.class);
-//            startActivity(intent);
-//        } else {
-//            Intent intent = new Intent(ActivityRecipe.this, HomeActivity.class);
-//            startActivity(intent);
-//        }
-//        finish();
-
 
     }
 
